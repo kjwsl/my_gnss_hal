@@ -2,35 +2,52 @@
 #define __GNSS_HW_CONNECTION_HPP__
 
 #include <string_view>
+#define GUARDED_BY(x) __attribute__((guarded_by(x)))
+
+#include <mutex>
 #include <memory>
-
-#include "Constants.h"
-
+#include <fcntl.h>
+#include <termios.h>
 
 namespace aidl::android::hardware::gnss::implemenation {
-/**
- * Represents a pipeline to GNSS harware.
- */
+    /**
+     * [Singleton]
+     * Represents a pipeline to GNSS hardware.
+     */
     class GnssHwConnection {
-    private:
-        static const std::string_view& s_kGnssFd;
-        static const std::shared_ptr<GnssHwConnection> s_mInstance;
+        public:
+            // Prevents Copies
+            GnssHwConnection(const GnssHwConnection&) = delete;
+            GnssHwConnection& operator=(const GnssHwConnection&) = delete;
 
-        GnssHwConnection();
+            // The class is a singleton
+            static std::shared_ptr<GnssHwConnection> getInstance();
+            /**
+             * Connects to the GNSS Sensor Hardware, and Update `s_svGnssFd`, and `s_bIsActive`.
+             * 
+             * @return bool Whether connection was successful
+             */
+            bool connect();
 
-    public:
-        // Prevents Copies
-        GnssHwConnection(const GnssHwConnection&) = deleted;
-        GnssHwConnection& operator=(const GnssHwConnection&) = deleted;
+            bool disconnect();
 
-        // The class is a singleton
-        static std::shared_ptr<GnssHwConnection> getInstance(){
-            if (!s_mInstance) {
-                s_mInstance = std::make_shared<GnssHwConnection>();
+            inline bool isActive() {
+                return s_bIsActive;
             }
-            return s_mInstance;
-        }
-        bool connectToHw();
+
+        private:
+            static std::mutex s_mutex;
+            static std::shared_ptr<GnssHwConnection> s_pInstance;
+            static std::once_flag s_initFlag;
+
+            int s_svGnssFd;
+            bool s_bIsActive{false};
+
+
+            GnssHwConnection() = default;
+            virtual ~GnssHwConnection();
+
+            speed_t convertStrToBaud(const std::string& str);
     };
 
 }

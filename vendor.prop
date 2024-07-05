@@ -1,0 +1,2 @@
+persist.gnss.device.path=/dev/ttyAMA0
+persist.gnss.device.baud=9600
