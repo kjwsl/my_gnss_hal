@@ -185,7 +185,6 @@ void Gnss::reportLocation(const GnssLocation& location) const {
         ALOGE("%s: GnssCallback is null.", __func__);
         return;
     }
-    auto status = sGnssCallback->gnssLocationCb(location);
     if (!status.isOk()) {
         ALOGE("%s: Unable to invoke gnssLocationCb", __func__);
     }

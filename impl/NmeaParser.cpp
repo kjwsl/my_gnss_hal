@@ -22,7 +22,6 @@ namespace android::hardware::gnss::utils {
         if (tokenizer.tokenizeNmeaMsg(s)) {
             size_t numTokens{tokenizer.getNumTokens()};
             if (numTokens < skMinNumField)
-
         }
 
 
@@ -68,7 +67,6 @@ namespace android::hardware::gnss::utils {
 
     bool NmeaParser::NmeaTokenizer::tokenizeNmeaMsg(const std::string_view msg) {
         // TODO: Thought it made sense to make it static because every time it's called it has to be created over and over again. Needs to check if this is necessary.
-        static const std::string_view skDelimiter{","sv};
         size_t pos{}, newPos{};
 
         if (msg.empty()) {
