@@ -6,6 +6,7 @@
 
 #include <mutex>
 #include <memory>
+#include <thread>
 #include <fcntl.h>
 #include <termios.h>
 
@@ -27,27 +28,40 @@ namespace aidl::android::hardware::gnss::implemenation {
              * 
              * @return bool Whether connection was successful
              */
-            bool connect();
+            bool start();
 
-            bool disconnect();
+            bool stop();
 
             inline bool isActive() {
-                return s_bIsActive;
+                return m_bIsRunning;
             }
+
+            /**
+             * Read Gnss Device File
+             * 
+             * @param [in] buffer Buffer to take read data
+             * @param [out] size Size of the buffer
+             */
+            ssize_t readDev(void* buffer, size_t size);
+
+            ssize_t writeDev();
 
         private:
             static std::mutex s_mutex;
             static std::shared_ptr<GnssHwConnection> s_pInstance;
             static std::once_flag s_initFlag;
+            std::thread m_thread;
 
-            int s_svGnssFd;
-            bool s_bIsActive{false};
-
+            int m_svGnssFd;
+            bool m_bIsRunning{false};
 
             GnssHwConnection() = default;
             virtual ~GnssHwConnection();
 
             speed_t convertStrToBaud(const std::string& str);
+            void readThread();
+
+            bool init();
     };
 
 }

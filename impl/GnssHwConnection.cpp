@@ -2,6 +2,7 @@
 #include <mutex>
 #include <unistd.h>
 #include <iomanip>
+#include <thread>
 #include <map>
 #include <termios.h>
 #include <cutils/properties.h>
@@ -10,34 +11,41 @@
 #include "include/GnssHwConnection.hpp"
 #include "include/Constants.h"
 
+#if DEBUG
+#define DEBUG(...) ALOGD(##__VA_ARGS__)
+#else
+#define DEBUG(...) (void)(0)
+#endif
+
 
 namespace aidl::android::hardware::gnss::implemenation {
     std::shared_ptr<GnssHwConnection> GnssHwConnection::s_pInstance{nullptr};
     std::once_flag GnssHwConnection::s_initFlag;
 
     std::shared_ptr<GnssHwConnection> GnssHwConnection::getInstance() {
+        DEBUG("GnssHwConnection is instantiated");
         std::call_once(s_initFlag, [](){ 
             s_pInstance.reset(new GnssHwConnection); 
         });
         return s_pInstance;
     }
 
-    bool GnssHwConnection::connect() {
+    void GnssHwConnection::init() {
         const char* path{};
         if (property_get(DEFAULT_PROPERTY_GPS_DEVICE_PATH, path) <= 0) {
-            ALOGE("Couldn't find the property %s", std::quoted(path));
+            ALOGE("Couldn't find property for GPS device (%s)", std::quoted(path));
             return false;
         } 
 
         int fd{};
-        if (fd = open(path, O_RDWR | O_NOCTTY | O_NDELAY); fd < 0) {
-            ALOGE("Couldn't open the path %s (%d)", std::quoted(path), errno);
+        if (fd = open(path, O_RDWR | O_NOCTTY | O_NDELAY | O_NONBLOCK); fd < 0) {
+            ALOGE("Couldn't open path %s (%d)", std::quoted(path), errno);
             return false;
         }
 
         std::string baud{};
         if (property_get(DEFAULT_PROPERTY_GPS_DEVICE_BAUDRATE, &baud, B9600) <= 0) {
-            ALOGW("Couldn't find the property %s, Baud rate defaults to `9600`", DEFAULT_PROPERTY_GPS_DEVICE_BAUDRATE);
+            ALOGW("Couldn't find property for baud rate (%s), Baud rate defaults to `9600`", DEFAULT_PROPERTY_GPS_DEVICE_BAUDRATE);
         }
 
         struct termios options;
@@ -46,38 +54,74 @@ namespace aidl::android::hardware::gnss::implemenation {
         cfsetospeed(&options, convertStrToBaud(baud));
         options.c_cflag |= (CLOCAL | CREAD);
         tcsetattr(fd, TCSANOW, &options);
+    }
 
-        s_bIsActive = true;
-        s_svGnssFd = fd;
+
+    bool GnssHwConnection::start() {
+        if (m_bIsRunning) {
+            return true;
+        }
+        
+        init();
+
+        m_thread = std::thread(&GnssHwConnection::readThread, this);
+        m_bIsRunning = true;
 
         return true;
     }
 
-    bool GnssHwConnection::disconnect() {
+    bool GnssHwConnection::stop() {
+        if (!m_bIsRunning) {
+            return true;
+        }
+
         // TODO: Think about whether this is really necessary
-        if (!s_svGnssFd) {
+        if (!m_svGnssFd) {
             ALOGE("The file descriptor is missing");
             return false;
         }
 
-        if (!s_bIsActive) {
+        if (!m_bIsRunning) {
             ALOGE("The connection is not active");
             return false;
         }
 
-        if (close(s_svGnssFd) == -1) {
+        if (close(m_svGnssFd) == -1) {
             ALOGE("Failed to close the file descriptor");
             return false;
         }
 
+        m_bIsRunning = false;
+        if (m_thread.joinable()) {
+            m_thread.join();
+        }
+
+
         return true;
+    }
+
+    void GnssHwConnection::readThread() {
+
+
+    }
+
+    ssize_t GnssHwConnection::readDev(void* buffer, size_t size) {
+        
+        
+
+    }
+
+    ssize_t GnssHwConnection::writeDev() {
+        
+
     }
 
 
 
     GnssHwConnection::~GnssHwConnection() {
-        if (!disconnect()) {
+        if (!stop() && !m_bIsRunning) {
             // TODO: What should I do to resolve this
+            ALOGE("Failed to stop Gnss Hardware Connection");
         }
     }
 

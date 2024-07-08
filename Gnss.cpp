@@ -23,7 +23,7 @@
 #include <cutils/properties.h>
 #include "AGnss.h"
 #include "AGnssRil.h"
-#include "Constants.h"
+#include "impl/include/Constants.h"
 #include "GnssAntennaInfo.h"
 #include "GnssBatching.h"
 #include "GnssConfiguration.h"
@@ -69,7 +69,7 @@ ScopedAStatus Gnss::setCallback(const std::shared_ptr<IGnssCallback>& callback) 
 
     IGnssCallback::GnssSystemInfo systemInfo = {
             .yearOfHw = 2023,
-            .name = "Ray, Raspberry Pi 5, AIDL v3",
+            .name = "Neo6M, Ray",
     };
     status = sGnssCallback->gnssSetSystemInfoCb(systemInfo);
     if (!status.isOk()) {
@@ -80,13 +80,16 @@ ScopedAStatus Gnss::setCallback(const std::shared_ptr<IGnssCallback>& callback) 
             .carrierFrequencyHz = 1.57542e+09,
             .codeType = GnssSignalType::CODE_TYPE_C,
     };
+    // Neo6M only supports GPS, but other constellations
+    /*
     GnssSignalType signalType2 = {
             .constellation = GnssConstellationType::GLONASS,
             .carrierFrequencyHz = 1.5980625e+09,
             .codeType = GnssSignalType::CODE_TYPE_C,
     };
+    */
     status = sGnssCallback->gnssSetSignalTypeCapabilitiesCb(
-            std::vector<GnssSignalType>({signalType1, signalType2}));
+            std::vector<GnssSignalType>({signalType1}));
     if (!status.isOk()) {
         ALOGE("%s: Unable to invoke callback.gnssSetSignalTypeCapabilitiesCb", __func__);
     }
@@ -103,7 +106,6 @@ std::unique_ptr<GnssLocation> Gnss::getLocationFromHW() {
         return nullptr;
     }
 
-    return devname_value.begin();
 
 
 
