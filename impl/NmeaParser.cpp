@@ -60,8 +60,10 @@ namespace android::hardware::gnss::utils {
 
     // TODO: Figure out which class can contain info from GSV Message
     void parseGSV(const string_view msg) {
-        msg
+    }
 
+    bool NmeaParser::validateHash(char hash) {
+        
 
     }
 

@@ -28,7 +28,7 @@ namespace aidl::android::hardware::gnss::implemenation {
              * 
              * @return bool Whether connection was successful
              */
-            bool start();
+            status_t start();
 
             bool stop();
 

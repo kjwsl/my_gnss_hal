@@ -7,6 +7,7 @@
 #include <termios.h>
 #include <cutils/properties.h>
 #include <utils/Log.h>
+#include <utils/Errors.h>
 
 #include "include/GnssHwConnection.hpp"
 #include "include/Constants.h"
@@ -16,6 +17,10 @@
 #else
 #define DEBUG(...) (void)(0)
 #endif
+
+#define BUFFER_SIZE 2048
+#define DEFAULT_GNSS_PATH "/dev/ttyGnss"
+#define DEFAULT_BAUD_RATE B9600
 
 
 namespace aidl::android::hardware::gnss::implemenation {
@@ -30,11 +35,10 @@ namespace aidl::android::hardware::gnss::implemenation {
         return s_pInstance;
     }
 
-    void GnssHwConnection::init() {
+    bool GnssHwConnection::init() {
         const char* path{};
-        if (property_get(DEFAULT_PROPERTY_GPS_DEVICE_PATH, path) <= 0) {
+        if (property_get(PROPERTY_GPS_DEVICE_PATH, path, DEFAULT_GNSS_PATH) <= 0) {
             ALOGE("Couldn't find property for GPS device (%s)", std::quoted(path));
-            return false;
         } 
 
         int fd{};
@@ -44,7 +48,7 @@ namespace aidl::android::hardware::gnss::implemenation {
         }
 
         std::string baud{};
-        if (property_get(DEFAULT_PROPERTY_GPS_DEVICE_BAUDRATE, &baud, B9600) <= 0) {
+        if (property_get(PROPERTY_GPS_DEVICE_BAUDRATE, &baud, B9600) <= 0) {
             ALOGW("Couldn't find property for baud rate (%s), Baud rate defaults to `9600`", DEFAULT_PROPERTY_GPS_DEVICE_BAUDRATE);
         }
 
@@ -54,6 +58,7 @@ namespace aidl::android::hardware::gnss::implemenation {
         cfsetospeed(&options, convertStrToBaud(baud));
         options.c_cflag |= (CLOCAL | CREAD);
         tcsetattr(fd, TCSANOW, &options);
+        return true;
     }
 
 
@@ -62,7 +67,9 @@ namespace aidl::android::hardware::gnss::implemenation {
             return true;
         }
         
-        init();
+        if(!init()){
+            return false;
+        }
 
         m_thread = std::thread(&GnssHwConnection::readThread, this);
         m_bIsRunning = true;
@@ -101,6 +108,8 @@ namespace aidl::android::hardware::gnss::implemenation {
     }
 
     void GnssHwConnection::readThread() {
+
+
 
 
     }
