@@ -1,7 +1,7 @@
-#ifndef __GNSS_HAL_CONSTANTS_H__
-#define __GNSS_HAL_CONSTANTS_H__
+#ifndef __CONSTANTS_H
+#define __CONSTANTS_H
 
-#define PROPERTY_GPS_DEVICE_PATH "persist.gnss.device.path"
-#define PROPERTY_GPS_DEVICE_BAUDRATE "persist.gnss.device.baud"
+#define DEFAULT_MAX_EVENT_CNT 10
+#define DEFAULT_BUFF_SIZE 64
 
-#endif // __GNSS_HAL_CONSTANTS_H__
+#endif//__CONSTANTS_H

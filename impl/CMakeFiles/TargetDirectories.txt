@@ -1,0 +1,8 @@
+/home/ray/code/iio-practice/cpp/CMakeFiles/edit_cache.dir
+/home/ray/code/iio-practice/cpp/CMakeFiles/rebuild_cache.dir
+/home/ray/code/iio-practice/cpp/src/CMakeFiles/MyLibrary.dir
+/home/ray/code/iio-practice/cpp/src/CMakeFiles/edit_cache.dir
+/home/ray/code/iio-practice/cpp/src/CMakeFiles/rebuild_cache.dir
+/home/ray/code/iio-practice/cpp/test/CMakeFiles/MyTests.dir
+/home/ray/code/iio-practice/cpp/test/CMakeFiles/edit_cache.dir
+/home/ray/code/iio-practice/cpp/test/CMakeFiles/rebuild_cache.dir

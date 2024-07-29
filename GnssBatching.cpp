@@ -70,6 +70,7 @@ ndk::ScopedAStatus GnssBatching::start(const Options& options) {
     mThread = std::thread([this]() {
         while (mIsActive == true) {
             const auto location = common::Utils::getMockLocation();
+            // const auto location = common::Utils::getMockLocation();
             this->batchLocation(location);
             std::this_thread::sleep_for(std::chrono::milliseconds(mMinIntervalMs));
         }

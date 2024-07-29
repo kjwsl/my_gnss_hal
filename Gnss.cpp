@@ -23,8 +23,8 @@
 #include <cutils/properties.h>
 #include "AGnss.h"
 #include "AGnssRil.h"
-#include "impl/include/Constants.h"
 #include "GnssAntennaInfo.h"
+#include "Gnss.h"
 #include "GnssBatching.h"
 #include "GnssConfiguration.h"
 #include "GnssDebug.h"
@@ -34,6 +34,10 @@
 #include "GnssVisibilityControl.h"
 #include "MeasurementCorrectionsInterface.h"
 #include "Utils.h"
+
+#include "impl/include/Constants.h"
+#include "impl/include/GnssListener.h"
+#include "impl/include/NmeaParser.h"
 
 namespace aidl::android::hardware::gnss {
 using ::android::hardware::gnss::common::Utils;
@@ -57,7 +61,6 @@ ScopedAStatus Gnss::setCallback(const std::shared_ptr<IGnssCallback>& callback) 
 
     int capabilities =
             (int)(IGnssCallback::CAPABILITY_MEASUREMENTS | IGnssCallback::CAPABILITY_SCHEDULING |
-                  IGnssCallback::CAPABILITY_SATELLITE_BLOCKLIST |
                   IGnssCallback::CAPABILITY_SATELLITE_PVT |
                   IGnssCallback::CAPABILITY_CORRELATION_VECTOR |
                   IGnssCallback::CAPABILITY_ANTENNA_INFO |
@@ -97,6 +100,14 @@ ScopedAStatus Gnss::setCallback(const std::shared_ptr<IGnssCallback>& callback) 
 }
 
 std::unique_ptr<GnssLocation> Gnss::getLocationFromHW() {
+
+    GnssListener listener {"/dev/ttyAMA0", [this](const GnssEvent& event) {
+        event.timeMs;
+        event.sentence;
+        sGnssCallback->gnssNmeaCb(event.timeMs, event.sentence);
+        NmeaParser parser{};
+        
+    }};
 
     std::array<char, PROPERTY_VALUE_MAX> devname_value;
     devname_value.fill(0);
@@ -154,10 +165,8 @@ ScopedAStatus Gnss::start() {
             mGnssPowerIndication->notePowerConsumption();
             if (currentLocation != nullptr) {
                 this->reportLocation(*currentLocation);
-            } else {
-                const auto location = Utils::getMockLocation();
-                this->reportLocation(location);
-            }
+            } 
+
         } while (mIsActive && mThreadBlocker.wait_for(std::chrono::milliseconds(mMinIntervalMs)));
     });
     return ScopedAStatus::ok();
@@ -187,7 +196,7 @@ void Gnss::reportLocation(const GnssLocation& location) const {
         ALOGE("%s: GnssCallback is null.", __func__);
         return;
     }
-    auto status = location->gnssLocationCb(location);
+    auto status = sGnssCallback->gnssLocationCb(location);
     if (!status.isOk()) {
         ALOGE("%s: Unable to invoke gnssLocationCb", __func__);
     }
