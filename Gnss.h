@@ -31,12 +31,14 @@
 #include <atomic>
 #include <mutex>
 #include <thread>
+#include <filesystem>
 #include "GnssConfiguration.h"
-#include "GnssMeasurementInterface.h"
 #include "GnssPowerIndication.h"
 #include "Utils.h"
+#include "impl/include/GnssListener.h"
 
 namespace aidl::android::hardware::gnss {
+    using namespace ::gnss::impl;
 
 class Gnss : public BnGnss {
   public:
@@ -88,8 +90,6 @@ class Gnss : public BnGnss {
     void setGnssMeasurementEnabled(const bool enabled);
     void setGnssMeasurementInterval(const long intervalMs);
     std::shared_ptr<GnssConfiguration> mGnssConfiguration;
-    std::shared_ptr<GnssPowerIndication> mGnssPowerIndication;
-    std::shared_ptr<GnssMeasurementInterface> mGnssMeasurementInterface;
 
   private:
     void reportLocation(const GnssLocation&) const;
@@ -101,6 +101,8 @@ class Gnss : public BnGnss {
     void reportNmea() const;
 
     static std::shared_ptr<IGnssCallback> sGnssCallback;
+    static std::shared_ptr<GnssListener> sListener;
+    static filesystem::path sPath;
 
     std::atomic<long> mMinIntervalMs;
     std::atomic<long> mGnssMeasurementIntervalMs;
@@ -110,7 +112,6 @@ class Gnss : public BnGnss {
     std::atomic<bool> mFirstFixReceived;
     std::atomic<bool> mGnssMeasurementEnabled;
     std::thread mThread;
-    ::android::hardware::gnss::common::ThreadBlocker mThreadBlocker;
 
     mutable std::mutex mMutex;
 };

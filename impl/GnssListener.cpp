@@ -24,7 +24,6 @@ namespace gnss::impl {
             close(mGnssFd);
             mGnssFd = -1;
         }
-
     }
 
     void GnssListener::start() {
@@ -133,7 +132,7 @@ namespace gnss::impl {
         vector<epoll_event> epollEvts(mMaxEvents);
 
 
-        GnssEventHandler eventHandler{ };
+        GnssEventManager eventManager{ };
         while (mIsRunning) {
             int eventCnt { epoll_wait(epoll_fd, epollEvts.data(), mMaxEvents, mTimeout) };
             if (eventCnt == -1) {
@@ -143,19 +142,21 @@ namespace gnss::impl {
                 break;
             }
 
-            eventHandler.clear();
+            eventManager.clear();
             string buffer {};
             buffer.resize(mBufferSize);
             for (int i = 0; i < eventCnt; i++) {
                 if (epollEvts[i].data.fd == mGnssFd) {
                     lseek(mGnssFd, 0, SEEK_SET);
                     ssize_t bytes_read = read(mGnssFd, buffer.data(), buffer.size());
-                    if (bytes_read <= 0) continue;
-                    eventHandler.writeToBuffer(buffer.data());
+
+                    // TODO: Maybe we can just break altogether
+                    if (bytes_read <= static_cast<ssize_t>(buffer.size())) continue;
+                    eventManager.writeToBuffer(buffer.data());
                 }
             }
-            while(eventHandler.hasNextNmeaSentence()) {
-                const auto& sentence { eventHandler.extractNmeaSentence()};
+            while(eventManager.hasNextNmeaSentence()) {
+                const auto& sentence { eventManager.extractNmeaSentence()};
                 if (sentence == nullopt) {
                     // This doesn't make sense, but just in case
                     continue;

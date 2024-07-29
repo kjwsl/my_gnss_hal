@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ray/code/iio-practice/cpp
+CMAKE_SOURCE_DIR = /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ray/code/iio-practice/cpp/build
+CMAKE_BINARY_DIR = /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -85,61 +85,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"gmock\" \"gtest\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/ray/code/iio-practice/cpp/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ray/code/iio-practice/cpp/build/CMakeFiles /home/ray/code/iio-practice/cpp/build/test//CMakeFiles/progress.marks
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ray/code/iio-practice/cpp/build/CMakeFiles 0
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/test//CMakeFiles/progress.marks
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/clean
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,56 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/ray/code/iio-practice/cpp/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/MyTests.dir/rule:
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/MyTests.dir/rule
-.PHONY : test/CMakeFiles/MyTests.dir/rule
+test/CMakeFiles/test.dir/rule:
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test.dir/rule
+.PHONY : test/CMakeFiles/test.dir/rule
 
 # Convenience name for target.
-MyTests: test/CMakeFiles/MyTests.dir/rule
-.PHONY : MyTests
+test: test/CMakeFiles/test.dir/rule
+.PHONY : test
 
 # fast build rule for target.
-MyTests/fast:
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/MyTests.dir/build.make test/CMakeFiles/MyTests.dir/build
-.PHONY : MyTests/fast
+test/fast:
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test.dir/build.make test/CMakeFiles/test.dir/build
+.PHONY : test/fast
 
-test_gnss_listener.o: test_gnss_listener.cpp.o
-.PHONY : test_gnss_listener.o
+test_nmea_parser.o: test_nmea_parser.cpp.o
+.PHONY : test_nmea_parser.o
 
 # target to build an object file
-test_gnss_listener.cpp.o:
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/MyTests.dir/build.make test/CMakeFiles/MyTests.dir/test_gnss_listener.cpp.o
-.PHONY : test_gnss_listener.cpp.o
+test_nmea_parser.cpp.o:
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test.dir/build.make test/CMakeFiles/test.dir/test_nmea_parser.cpp.o
+.PHONY : test_nmea_parser.cpp.o
 
-test_gnss_listener.i: test_gnss_listener.cpp.i
-.PHONY : test_gnss_listener.i
+test_nmea_parser.i: test_nmea_parser.cpp.i
+.PHONY : test_nmea_parser.i
 
 # target to preprocess a source file
-test_gnss_listener.cpp.i:
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/MyTests.dir/build.make test/CMakeFiles/MyTests.dir/test_gnss_listener.cpp.i
-.PHONY : test_gnss_listener.cpp.i
+test_nmea_parser.cpp.i:
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test.dir/build.make test/CMakeFiles/test.dir/test_nmea_parser.cpp.i
+.PHONY : test_nmea_parser.cpp.i
 
-test_gnss_listener.s: test_gnss_listener.cpp.s
-.PHONY : test_gnss_listener.s
+test_nmea_parser.s: test_nmea_parser.cpp.s
+.PHONY : test_nmea_parser.s
 
 # target to generate assembly for a file
-test_gnss_listener.cpp.s:
-	cd /home/ray/code/iio-practice/cpp/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/MyTests.dir/build.make test/CMakeFiles/MyTests.dir/test_gnss_listener.cpp.s
-.PHONY : test_gnss_listener.cpp.s
+test_nmea_parser.cpp.s:
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test.dir/build.make test/CMakeFiles/test.dir/test_nmea_parser.cpp.s
+.PHONY : test_nmea_parser.cpp.s
 
 # Help Target
 help:
@@ -206,15 +161,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... MyTests"
-	@echo "... test_gnss_listener.o"
-	@echo "... test_gnss_listener.i"
-	@echo "... test_gnss_listener.s"
+	@echo "... test"
+	@echo "... test_nmea_parser.o"
+	@echo "... test_nmea_parser.i"
+	@echo "... test_nmea_parser.s"
 .PHONY : help
 
 
@@ -226,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/ray/code/iio-practice/cpp/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

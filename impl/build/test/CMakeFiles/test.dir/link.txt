@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/test.dir/test_nmea_parser.cpp.o -o test 

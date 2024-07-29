@@ -1,4 +1,4 @@
-# Install script for directory: /home/ray/code/iio-practice/cpp/test
+# Install script for directory: /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,10 +40,5 @@ endif()
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/ray/code/iio-practice/cpp/build/_deps/googletest-build/cmake_install.cmake")
 endif()
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/ray/code/iio-practice/cpp
+# Install script for directory: /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/ray/code/iio-practice/cpp/build/test/cmake_install.cmake")
+  include("/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/test/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ray/code/iio-practice/cpp/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

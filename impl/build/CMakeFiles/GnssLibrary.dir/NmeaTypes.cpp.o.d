@@ -1,6 +1,7 @@
 CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o: \
- /home/ray/code/iio-practice/cpp/NmeaTypes.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
+ /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaTypes.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -165,8 +166,8 @@ CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/ray/code/iio-practice/cpp/include/NmeaTypes.h \
- /home/ray/code/iio-practice/cpp/include/Tokenizer.h \
+ /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/include/NmeaTypes.h \
+ /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/include/Tokenizer.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/optional \

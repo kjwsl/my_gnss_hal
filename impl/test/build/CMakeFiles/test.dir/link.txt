@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/test.dir/test_nmea_parser.cpp.o CMakeFiles/test.dir/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaParser.cpp.o -o test 

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ray/code/iio-practice/cpp
+CMAKE_SOURCE_DIR = /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ray/code/iio-practice/cpp/build
+CMAKE_BINARY_DIR = /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/GnssLibrary.dir/depend.make
@@ -72,76 +72,108 @@ include CMakeFiles/GnssLibrary.dir/flags.make
 CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o: CMakeFiles/GnssLibrary.dir/flags.make
 CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o: ../GnssListener.cpp
 CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o: CMakeFiles/GnssLibrary.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/code/iio-practice/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o -MF CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o.d -o CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o -c /home/ray/code/iio-practice/cpp/GnssListener.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o -MF CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o.d -o CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o -c /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/GnssListener.cpp
 
 CMakeFiles/GnssLibrary.dir/GnssListener.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GnssLibrary.dir/GnssListener.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/code/iio-practice/cpp/GnssListener.cpp > CMakeFiles/GnssLibrary.dir/GnssListener.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/GnssListener.cpp > CMakeFiles/GnssLibrary.dir/GnssListener.cpp.i
 
 CMakeFiles/GnssLibrary.dir/GnssListener.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GnssLibrary.dir/GnssListener.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/code/iio-practice/cpp/GnssListener.cpp -o CMakeFiles/GnssLibrary.dir/GnssListener.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/GnssListener.cpp -o CMakeFiles/GnssLibrary.dir/GnssListener.cpp.s
+
+CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o: CMakeFiles/GnssLibrary.dir/flags.make
+CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o: ../NmeaParser.cpp
+CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o: CMakeFiles/GnssLibrary.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o -MF CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o.d -o CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o -c /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaParser.cpp
+
+CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaParser.cpp > CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.i
+
+CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaParser.cpp -o CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.s
 
 CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o: CMakeFiles/GnssLibrary.dir/flags.make
 CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o: ../NmeaTypes.cpp
 CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o: CMakeFiles/GnssLibrary.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/code/iio-practice/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o -MF CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o.d -o CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o -c /home/ray/code/iio-practice/cpp/NmeaTypes.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o -MF CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o.d -o CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o -c /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaTypes.cpp
 
 CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/code/iio-practice/cpp/NmeaTypes.cpp > CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaTypes.cpp > CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.i
 
 CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/code/iio-practice/cpp/NmeaTypes.cpp -o CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaTypes.cpp -o CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.s
 
 CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o: CMakeFiles/GnssLibrary.dir/flags.make
 CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o: ../Tokenizer.cpp
 CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o: CMakeFiles/GnssLibrary.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/code/iio-practice/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o -MF CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o.d -o CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o -c /home/ray/code/iio-practice/cpp/Tokenizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o -MF CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o.d -o CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o -c /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/Tokenizer.cpp
 
 CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/code/iio-practice/cpp/Tokenizer.cpp > CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/Tokenizer.cpp > CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.i
 
 CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/code/iio-practice/cpp/Tokenizer.cpp -o CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/Tokenizer.cpp -o CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.s
+
+CMakeFiles/GnssLibrary.dir/regex_test.cpp.o: CMakeFiles/GnssLibrary.dir/flags.make
+CMakeFiles/GnssLibrary.dir/regex_test.cpp.o: ../regex_test.cpp
+CMakeFiles/GnssLibrary.dir/regex_test.cpp.o: CMakeFiles/GnssLibrary.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/GnssLibrary.dir/regex_test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/regex_test.cpp.o -MF CMakeFiles/GnssLibrary.dir/regex_test.cpp.o.d -o CMakeFiles/GnssLibrary.dir/regex_test.cpp.o -c /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/regex_test.cpp
+
+CMakeFiles/GnssLibrary.dir/regex_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GnssLibrary.dir/regex_test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/regex_test.cpp > CMakeFiles/GnssLibrary.dir/regex_test.cpp.i
+
+CMakeFiles/GnssLibrary.dir/regex_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GnssLibrary.dir/regex_test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/regex_test.cpp -o CMakeFiles/GnssLibrary.dir/regex_test.cpp.s
 
 CMakeFiles/GnssLibrary.dir/time.cpp.o: CMakeFiles/GnssLibrary.dir/flags.make
 CMakeFiles/GnssLibrary.dir/time.cpp.o: ../time.cpp
 CMakeFiles/GnssLibrary.dir/time.cpp.o: CMakeFiles/GnssLibrary.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/code/iio-practice/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GnssLibrary.dir/time.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/time.cpp.o -MF CMakeFiles/GnssLibrary.dir/time.cpp.o.d -o CMakeFiles/GnssLibrary.dir/time.cpp.o -c /home/ray/code/iio-practice/cpp/time.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/GnssLibrary.dir/time.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GnssLibrary.dir/time.cpp.o -MF CMakeFiles/GnssLibrary.dir/time.cpp.o.d -o CMakeFiles/GnssLibrary.dir/time.cpp.o -c /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/time.cpp
 
 CMakeFiles/GnssLibrary.dir/time.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GnssLibrary.dir/time.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/code/iio-practice/cpp/time.cpp > CMakeFiles/GnssLibrary.dir/time.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/time.cpp > CMakeFiles/GnssLibrary.dir/time.cpp.i
 
 CMakeFiles/GnssLibrary.dir/time.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GnssLibrary.dir/time.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/code/iio-practice/cpp/time.cpp -o CMakeFiles/GnssLibrary.dir/time.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/time.cpp -o CMakeFiles/GnssLibrary.dir/time.cpp.s
 
 # Object files for target GnssLibrary
 GnssLibrary_OBJECTS = \
 "CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o" \
+"CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o" \
 "CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o" \
 "CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o" \
+"CMakeFiles/GnssLibrary.dir/regex_test.cpp.o" \
 "CMakeFiles/GnssLibrary.dir/time.cpp.o"
 
 # External object files for target GnssLibrary
 GnssLibrary_EXTERNAL_OBJECTS =
 
 libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/GnssListener.cpp.o
+libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/NmeaParser.cpp.o
 libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/NmeaTypes.cpp.o
 libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/Tokenizer.cpp.o
+libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/regex_test.cpp.o
 libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/time.cpp.o
 libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/build.make
 libGnssLibrary.a: CMakeFiles/GnssLibrary.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ray/code/iio-practice/cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libGnssLibrary.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libGnssLibrary.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/GnssLibrary.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GnssLibrary.dir/link.txt --verbose=$(VERBOSE)
 
@@ -154,6 +186,6 @@ CMakeFiles/GnssLibrary.dir/clean:
 .PHONY : CMakeFiles/GnssLibrary.dir/clean
 
 CMakeFiles/GnssLibrary.dir/depend:
-	cd /home/ray/code/iio-practice/cpp/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ray/code/iio-practice/cpp /home/ray/code/iio-practice/cpp /home/ray/code/iio-practice/cpp/build /home/ray/code/iio-practice/cpp/build /home/ray/code/iio-practice/cpp/build/CMakeFiles/GnssLibrary.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build /home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/build/CMakeFiles/GnssLibrary.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/GnssLibrary.dir/depend
 

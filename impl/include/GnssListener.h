@@ -7,7 +7,7 @@
 #include <sys/epoll.h>
 
 #include "Constants.h"
-#include "GnssEventHandler.h"
+#include "GnssEventManager.h"
 
 namespace gnss::impl{
 
