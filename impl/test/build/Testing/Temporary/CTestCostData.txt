@@ -1,0 +1,13 @@
+Test 0 1
+Test 0 1
+Test 0 1
+NmeaParser: 0 0
+NmeaParser: 0 0
+NmeaParser: 0 0
+NmeaParser: 0 0
+NmeaParser: 0 0
+NmeaParser: 0 0
+NmeaParser: 0 0
+NmeaParser: Checksum validation 0 0
+---
+NmeaParser: Checksum validation

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/tests.dir/test_nmea_parser.o CMakeFiles/tests.dir/home/ray/projects/rpi5/aosp-r34/device/brcm/rpi5/gnss/impl/NmeaParser.o -o tests  /usr/local/lib/libCatch2Main.a /usr/local/lib/libCatch2.a 

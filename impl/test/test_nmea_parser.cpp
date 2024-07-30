@@ -1,25 +1,97 @@
+#include <cstdio>
 #include <iostream>
+#include <fstream>
+#include <unistd.h>
+#include <catch2/catch_test_macros.hpp>
 #include "../include/NmeaParser.h"
 
 using namespace gnss::impl;
 using namespace std;
 
-int main() {
+class NmeaParserTest : public NmeaParser {
+    public:
 
-    NmeaCallbacks callbacks{
-        .ggaCallback = [](const GgaEvent& event) {
-            event.isValid ? cout << "GGA Callback: Valid" << endl : cout << "GGA Callback: Invalid" << endl;
-        },
-            .rmcCallback = [](const RmcEvent& event) { 
-            event.isValid ? cout << "RMC Callback: Valid" << endl : cout << "RMC Callback: Invalid" << endl;
+        NmeaParser parser{};
+        ifstream fs{};
+
+
+        NmeaParserTest() {
+            fs.open("../nmea_sample.txt");
+
+            if (!fs.is_open()) {
+                FAIL("Failed to open file");
             }
-    };
-    NmeaParser parser{"$GPRMC,161229.487,A,3723.2475,N,12158.3416,W,0.13,309.62,120598,,*10", callbacks};
-    try {
-        parser.parse();
-    } catch (const exception& e) {
-        cout << e.what() << endl;
+        }
+
+        ~NmeaParserTest() {
+            fs.close();
+        }
+
+        bool isValidChecksum() {
+            bool result = false;
+            parser.setCallbacks(NmeaCallbacks{
+                    .ggaCallback = [&result](const unique_ptr<NmeaEvent> event) {
+                    result = event->isValid;
+                    },
+                    .rmcCallback = [&result](const unique_ptr<NmeaEvent> event) { 
+                    result = event->isValid;
+                    },
+                    .unknownCallback = [&result](const unique_ptr<NmeaEvent> event) { 
+                    result = event->isValid;
+                    }
+                    });
+
+            if (parser.isReady()) {
+                try {
+                    parser.parse();
+                } catch (const exception& e) {
+                    cout << "Exception happened: " << e.what() << endl;
+                    return false;
+                }
+            }
+            return result;
+        }
+
+        GgaEvent getGgaEvent() {
+            parser.setCallbacks({
+                    .ggaCallback = [](const unique_ptr<NmeaEvent> event) {
+                    REQUIRE(gga != nullptr);
+                    REQUIRE(gga->isValid);
+                    REQUIRE(gga->time == "123519");
+                    REQUIRE(gga->latitude == "4807.038");
+                    REQUIRE(gga->longitude == "01131.000");
+                    REQUIRE(gga->fixQuality == 1);
+                    REQUIRE(gga->numSatellites == 8);
+                    REQUIRE(gga->hdop == 1.5);
+                    REQUIRE(gga->altitude == 280.2);
+                    REQUIRE(gga->altitudeUnits == 'M');
+                    REQUIRE(gga->geoidHeight == 0.0);
+                    REQUIRE(gga->geoidHeightUnits == 'M');
+                    REQUIRE(gga->dgpsAge == 0.0);
+                    REQUIRE(gga->dgpsStationId == 0);
+
+                    },
+                    });
+
+        }
+};
+
+
+TEST_CASE("NmeaParser: Checksum validation", "[nmea_parser]") {
+    ifstream fs { "../nmea_sample.txt"};
+
+    if (!fs.is_open()) {
+        FAIL("Failed to open file");
     }
 
-    return 0;
+    for (string sentence; getline(fs, sentence);) {
+        INFO("Sentence: " << sentence);
+        parser.setSentence(sentence);
+
+        auto res = isValidChecksum();
+        CAPTURE(sentence, res, true);
+        REQUIRE(res);
+    }
+
+    fs.close();
 }
