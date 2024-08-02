@@ -48,6 +48,5 @@ apex {
     prebuilts: [
         "android.hardware.gnss-service.rpi.rc",
         "android.hardware.gnss-service.rpi.xml",
-        "android.hardware.location.gps.prebuilt.xml", // permission
     ],
 }
